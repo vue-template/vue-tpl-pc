@@ -1,6 +1,6 @@
-# benefit
+# vue-tpl-pc
 
-> 嗒嗒乘客福利
+> vue PC 端 SPA 解决方案
 
 ## 构建说明
 
