@@ -1,0 +1,3 @@
+export const SET_PLATE = 'SET_PLATE'
+export const SET_GOODS_LIST = 'SET_GOODS_LIST'
+export const SET_BORROW_COUNT = 'SET_BORROW_COUNT'

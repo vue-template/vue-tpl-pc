@@ -1,0 +1,70 @@
+// 1px border hack：暂不支持虚线和圆角
+-line(prop = false, $color = #eee)
+  if (prop)
+    border-{prop} 1px solid $color
+  else
+    border 1px solid $color
+
+  @media screen and (-webkit-min-device-pixel-ratio 2)
+    $bdt = linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, $color 50%, $color 100%)
+    $bdb = linear-gradient(top, rgba(0, 0, 0, 0) 0%, $color 50%, $color 100%)
+    $bdl = linear-gradient(right, rgba(0, 0, 0, 0) 0%, $color 50%, $color 100%)
+    $bdr = linear-gradient(left, rgba(0, 0, 0, 0) 0%, $color 50%, $color 100%)
+
+    position relative
+    border 0
+
+    if prop == 'top' or prop == 'bottom'
+      background-repeat: repeat-x;
+      background-size: 100% 1px;
+      if prop == 'top'
+        background-position left top
+        background-image $bdt
+      else
+        background-position left bottom
+        background-image $bdb
+    else if prop == 'left' or prop == 'right'
+      background-repeat: repeat-y;
+      -webkit-background-size: 1px 100%;
+      if prop == 'left'
+        background-position left top
+        background-image $bdl
+      else
+        background-position right top
+        background-image $bdr
+    else
+      &::after
+        content ''
+        width 100%
+        height 100%
+        box-sizing border-box
+        position absolute
+        z-index $zindex-hairline
+        top 0
+        left 0
+        padding 1px
+        background-image $bdt, $bdr, $bdb, $bdl
+        background-size 100% 1px, 1px 100%, 100% 1px, 1px 100%
+        background-position top, right, bottom, left
+        background-repeat no-repeat
+        pointer-events none
+
+// 用法：hairline #ccc
+hairline()
+  -line(arguments)
+
+// hairline-top #ccc
+hairline-top()
+  -line('top', arguments)
+
+// hairline-bottom #ccc
+hairline-bottom()
+  -line('top', arguments)
+
+// hairline-left #ccc
+hairline-left()
+  -line('top', arguments)
+
+// hairline-right #ccc
+hairline-right()
+  -line('top', arguments)

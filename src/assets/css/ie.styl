@@ -1,0 +1,42 @@
+@import './var'
+@import $node-modules-path + 'nib'
+
+// IE 兼容样式
+html.ie
+  #app
+    > .view
+      display block
+      > .main
+        padding-bottom 120px
+      > footer
+        position fixed
+        bottom 0
+        left 0
+        right 0
+
+// IE9 兼容样式
+html.ie.ie9
+  #app
+    > .view
+      > header
+        h1
+          float left
+          line-height 55px
+          &::before
+            float left
+            margin-top 13px
+        .loginbar
+          float right
+          line-height 55px
+          .logout
+            display inline-block
+  // 我的订单
+  .subview.order-list
+    .w-filter
+      display table
+      .item
+        float left
+  // 分页
+  .w-page
+    clear both
+    float right

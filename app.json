@@ -1,0 +1,42 @@
+{
+  "pages": [{
+    "entry": "src",
+    "title": "嗒嗒巴士企业版",
+    "cdn": {
+      "css": ["static/css/index.css"]
+    }
+  }],
+  "dist": "./dist",
+  "tpl": "index.html",
+  "devServer": {
+    "port": 88,
+    "autoOpenBrowser": true,
+    "publicPath": "/"
+  },
+  "useVueRuntime": false,
+  "clean": true,
+  "sourceMap": true,
+  "staticDirectory": "static",
+  "staticPath": "/",
+  "urlLoaderLimit": 10000,
+  "static": true,
+  "extractCSS": "[name].[contenthash:7].css",
+  "alias": {
+    "src": "src"
+  },
+  "cdn": {
+    "js": [
+      "//cdn.bootcss.com/babel-polyfill/6.23.0/polyfill.js",
+      "//cdn.bootcss.com/vue/2.2.6/vue.min.js",
+      "//cdn.staticfile.org/vuex/2.3.0/vuex.min.js",
+      "//cdn.bootcss.com/vue-router/2.4.0/vue-router.min.js",
+      "//unpkg.com/mint-ui/lib/index.js"
+    ],
+    "css": ["//unpkg.com/mint-ui/lib/style.css"]
+  },
+  "extends": ["vue2", "lint", "autoprefixer"],
+  "externals": {
+    "vue": "Vue",
+    "vuex": "Vuex"
+  }
+}

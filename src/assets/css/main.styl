@@ -1,0 +1,685 @@
+// 全局样式
+@import './var'
+@import $node-modules-path + 'nib'
+@import './reset'
+// @import './mixin'
+
+html
+body
+  height 100%
+
+body
+  margin 0 auto
+  font-family '微软雅黑', 'Microsoft YaHei', Helvetica, STHeiTi, Sans-serif
+  line-height 1.5
+  font-size 16px
+  // -webkit-touch-callout none
+  // user-select none
+  background $silver
+
+
+// ====================================================================== helper
+// 隐藏 vue 未编译的 Mustache 标签
+[v-cloak]
+.hidden
+  display none
+
+.v-link-active
+  color $yellow
+
+// 隐藏元素
+.vhidden
+  visibility hidden
+
+// 动画
+.anime-fade-in
+  animation fadeIn 1s
+.anime-slide-down
+  animation slideDown 1s
+.anime-slide-up
+  animation slideUp 1s
+
+// vue transitions
+.fade-enter
+.fade-leave-active
+  opacity 0
+.fade-enter-active
+.fade-leave-active
+  transition opacity .3s
+.bounce-enter
+.bounce-leave-active
+  opacity 0
+  transform scale(.5)
+.bounce-enter-active
+.bounce-leave-active
+  transition .3s
+.slide-left-enter
+.slide-right-leave-active
+  opacity 0
+  transform translate(30, 0)
+.slide-left-leave-active
+.slide-right-enter
+  opacity 0
+  transform translate(-30, 0)
+.slide-left-enter-active
+.slide-left-leave-active
+.slide-right-enter-active
+.slide-right-leave-active
+  // position absolute
+  transition .3s cubic-bezier(.55, 0, .1, 1)
+
+
+// ====================================================================== 模块
+// 选项卡
+.w-tab
+  .ivu-tabs-bar
+    margin-bottom 25px
+    border none
+    .ivu-tabs-nav-container
+      display flex
+      align-items flex-end
+      margin 0
+      line-height 1
+      height 70px
+      font-size 18px
+      color $black
+      .ivu-tabs-nav-wrap
+        flex 1
+        margin 0
+        .ivu-tabs-ink-bar
+          height 3px
+          // background-color $orange
+        .ivu-tabs-tab
+          padding-bottom 15px
+        .ivu-tabs-nav-right
+          margin-top 8px
+          font-size 15px
+          color $gray
+          em
+            font-size 16px
+            color $dblack
+// 面包屑
+.w-breadcrumb
+  margin-bottom 30px
+
+// 卡片
+.w-card
+  border-radius 8px
+  .ivu-card-head
+    display flex
+    align-items center
+    padding 0 30px
+    height 50px
+    border-radius 8px 8px 0 0
+    font-size 13px
+    background $lgray
+    .title
+      padding-left 10px
+      border-left 3px solid $lblack
+      line-height 1
+      color $black
+  .ivu-card-body
+    .list
+      margin -16px
+      li
+        line-height 50px
+        padding 0 30px
+        font-weight lighter
+        white-space nowrap
+        .dt
+          display inline-block
+          width 8em
+        .dd
+          margin-left 1em
+          color $lblack
+          word-wrap break-word
+        &:nth-child(2n)
+          background $silver
+
+.w-cardbox
+  display flex
+  justify-content space-between
+  margin 0 -16px
+  .w-card
+    flex 1
+    margin 0 16px 20px
+
+// 计时器
+.w-countdown
+  color $red
+  font-size 14px
+  &::before
+    content ''
+    display inline-block
+    margin-right 8px
+    width 16px
+    height @width
+    background url(../img/icon-clock.png) 50% 50% no-repeat
+    background-size contain
+    vertical-align -2px
+
+// 通用信息块
+.w-offer
+  display flex
+  margin 20px auto
+  padding 20px 40px
+  border-radius 10px
+  box-shadow 0 2px 3px 0 rgba(0, 0, 0, .2)
+  background #fff
+  .content
+    flex 1
+    .intro
+      display flex
+      justify-content space-between
+      .title
+        height 70px
+        display flex
+        justify-content flex-start
+        .avatar
+          width 70px
+          height 70px
+          margin-right 20px
+          overflow hidden
+          position relative
+          img
+            width 100%
+            height 100%
+            border-radius 50%
+          &.vip::after
+            content ''
+            position absolute
+            right 0
+            bottom 0
+            width 20px
+            height 20px
+            border-radius 50%
+            border 2px solid #fff
+            background url(../img/icon_vip.jpg) no-repeat
+        .company
+          .name
+            font-size 20px
+            line-height 1
+            color $lblack
+            font-weight normal
+        .tags
+          margin-top 10px
+          span
+            margin-right 10px
+            border 1px solid  #ff9c00
+            border-radius 12px
+            font-size 14px
+            line-height 22px
+            padding 0 8px
+            text-align center
+            color #ff9c00
+      .score
+        margin-top 8px
+        display flex
+        align-items center
+        line-height 1
+        em
+          font-size 14px
+          color #666
+          margin-right 4px
+        i
+          display inline-block
+          margin-left 6px
+          width 18px
+          height 18px
+          background url(../img/star_no.jpg) 50% 50% no-repeat
+          background-size contain
+          &.on
+            background-image url(../img/star_ok.jpg)
+    .details
+      margin-left 90px
+      margin-top 24px
+      box-sizing border-box
+      .dt
+        height 22px
+        display flex
+        justify-content space-between
+        font-size 16px
+        color #666
+        margin-bottom 8px
+        .key
+          flex 1
+          overflow hidden
+          background url(../img/bg_line.jpg) repeat-x 100px 10px
+          background-position 100px 10px
+          &.total
+            color $black
+            font-size 16px
+        .val
+          text-align right
+          position relative
+          top -5px
+          &.total
+            color $black
+            font-size 16px
+            top 0
+            padding-right 32px
+          i
+            display inline-block
+            width 22px
+            height 22px
+            background url(../img/btn_down.jpg) no-repeat center center
+            margin-left 10px
+            position relative
+            top 6px
+            cursor pointer
+            &.on
+              background url(../img/btn_up.jpg) no-repeat center center
+      .dd
+        margin-top 6px
+        margin-bottom 14px
+        table
+          width 100%
+          text-align left
+          line-height 34px
+          thead
+            background $dsilver
+            font-size 16px
+            color $black
+          tbody
+            background $silver
+            font-size 14px
+            color #666
+          td
+            &:first-child
+              padding-left 34px
+            &:last-child
+              text-align right
+              padding-right 34px
+            &.explain
+              text-align left
+              padding-left 34px
+              font-size 14px
+              color #666
+  .footer
+    display flex
+    align-items center
+    // justify-content center
+    box-sizing border-box
+    width 200px
+    padding 0 80px
+    button
+      padding 7px 35px
+
+// 通用按钮
+.w-btn
+  box-sizing border-box
+  padding 0 2em
+  height .88rem
+  line-height @height
+  border-radius .1rem
+  font-size .32rem
+  color $black
+  background $yellow
+  transition background .2s
+  &.block
+    display block
+    margin auto
+    text-align center
+  &:active:not(.disabled)
+    background $dyellow
+  &.disabled
+    background $gray
+
+// 空状态
+// .w-empty
+//   padding 2.1rem .3rem .3rem
+//   text-align center
+//   font-size .26rem
+//   color $gray
+//   background url(../img/icon-fail.png) 50% 0 no-repeat
+//   background-size auto 1.9rem
+
+// 表格
+.w-table
+  width 100%
+  border none
+  color $gray
+  background $silver
+  th
+    border-top 1px solid #D7D7D7
+    padding 10px 15px
+    text-align left
+    color $lblack
+    font-size 15px
+    font-weight normal
+    background $lgray
+  td
+    border none
+    padding 20px 15px
+    font-size 13px
+  tbody
+    tr:nth-child(2n)
+      background $dsilver
+    tr:hover
+      background #efefef
+
+// 分页
+.w-page
+  display flex
+  justify-content flex-end
+  margin 15px 0
+  color $lblack
+
+// 过滤器
+.w-filter
+  display flex
+  align-items center
+  margin 20px -4px
+  .item
+    margin 0 4px
+
+
+// ====================================================================== helper
+#app
+  box-sizing border-box
+  height 100%
+  color $black
+  background $silver
+  > .view
+    display flex
+    flex-direction column
+    justify-content space-between
+    box-sizing border-box
+    position relative
+    min-height 100%
+    background $silver
+    > header
+    > .main
+    > footer
+      box-sizing border-box
+      .layout
+        max-width designwidth
+        // min-width 960px
+        margin 0 auto
+        padding 0 20px
+    > header
+      position fixed
+      z-index 11
+      top 0
+      left 0
+      right 0
+      background $dblack
+      .layout
+        display flex
+        justify-content space-between
+        align-items center
+        padding 0 20px
+        height 55px
+        color $gray
+        background $dblack
+      h1
+        display flex
+        align-items center
+        margin-right 1em
+        color #fff
+        font-size 22px
+        font-weight normal
+        letter-spacing 2px
+        &::before
+          content ''
+          display block
+          margin-right .3em
+          width 109px
+          height 26px
+          background url(../img/logo.png) no-repeat
+          background-size contain
+      .loginbar
+        display flex
+        align-items center
+        justify-content flex-end
+        .logout
+          margin-left 10px
+          width 19px
+          height 0
+          padding-top 16px
+          overflow hidden
+          font-size 0
+          background url(../img/icon-logout.png) no-repeat
+          background-size contain
+    > .main
+      flex 1
+      background $silver
+      padding-bottom 30px
+      &::before
+        content ''
+        display block
+        margin-top 55px
+        height 70px
+        margin-bottom -70px
+        background #fff
+        box-shadow 5px 0 5px 0 rgba(0, 0, 0, .1)
+      .panel
+        background #fff
+    > footer
+      background $dblack
+      .layout
+        padding 27px 20px
+        p
+          color $gray
+          text-align center
+          font-size 14px
+          line-height 1.7
+          em
+            color $silver
+
+// 我的订单
+.subview.order-list
+  .w-filter
+    .item
+      // max-width 10em
+      color $gray
+      font-size 14px
+      .select
+        min-width 10em
+      .button
+        min-width 8em
+        font-size 14px
+        padding 4px 0
+        letter-spacing 3px
+  .w-table
+    .actions
+      display flex
+      align-items center
+      // min-width 100px
+      a
+        color $orange
+        margin-right 15px
+    .offerbox
+      .header
+        display flex
+        justify-content space-between
+        h3
+          flex 1
+          display flex
+          align-items center
+          font-size 12
+          color $lblack
+          font-weight normal
+          &::before
+            content ''
+            display inline-block
+            margin-right 8px
+            width 20px
+            height @width
+            background url(../img/icon-money.png) no-repeat
+            background-size contain
+        a
+          color $orange
+          &::after
+            content '>>'
+            font-family sans-serif
+      .offers
+        display flex
+        margin 10px -8px
+        &:empty
+          display none
+          &::before
+            content ''
+            display block
+            margin 10px auto 5px
+            height 120px
+            background url(../img/bg-empty.png) center no-repeat
+            background-size contain
+          &::after
+            content '暂无报价'
+            display block
+            text-align center
+            font-size 14px
+        .w-offer
+          box-sizing border-box
+          display block
+          margin 0 8px
+          padding 20px
+          max-width 25%
+          .score
+            display block
+            em
+              display none
+            i
+              margin 0 6px 0 0
+              width 14px
+              height 14px
+          .content
+            display block
+            .details
+              margin 20px 0 0
+              box-sizing border-box
+              dt .val.total
+                padding-right 0
+          .footer
+            margin-top 20px
+            justify-content center
+          .ivu-poptip
+          .ivu-poptip-rel
+            display block
+          // .ivu-poptip-arrow
+          //   border-bottom-color $silver
+          //   &::after
+          //     border-bottom-color $silver
+          .ivu-poptip-inner
+            border-radius 5px
+            // background $silver
+          .ivu-poptip-body
+            padding 5px
+            table
+              width 100%
+              thead
+                tr:hover
+                  background transparent
+                td
+                  font-size 16px
+                  color $black
+              tbody
+                tr:hover
+                  background #fdfdfd
+                td
+                  font-size 14px
+                  color $gray
+              td
+                padding 0 10px
+                line-height 34px
+                white-space nowrap
+
+// 订单详情
+// .subview.order-details
+
+// 费用支付
+.subview.pay-order
+  .paytips
+    display flex
+    align-items center
+    margin 40px 0
+    color $orange
+    padding-bottom 10px
+    border-bottom 2px solid $lgray
+    i
+      font-size 20px
+      margin-right 8px
+  .rules
+    margin 40px 0 50px
+    padding-bottom 20px
+    border-bottom 2px dashed  $lgray
+    line-height 1
+    font-size 14px
+    color $gray
+  .paynow
+    text-align center
+    .agreement
+      font-size 14px
+      color $gray
+      line-height 1
+      .ivu-checkbox-wrapper
+        margin-right 6px
+      .ivu-checkbox-inner
+        // border-color #D7D7D7
+        border-radius 3px
+        // background-color $silver
+      a
+        color $blue
+    button
+      margin-top 15px
+      padding 7px 25px
+
+// 报价信息
+.subview.offer-list
+  .tips
+    display flex
+    align-items center
+    justify-content space-between
+    margin 40px 0
+    color $orange
+    padding-bottom 10px
+    border-bottom 2px solid $lgray
+    p
+      padding-left 34px
+      font-size 18px
+      line-height 24px
+      color #666
+      background url(../img/icon-send.png) no-repeat left center
+    .timer button
+      margin-left 20px
+  // .offers.disabled .w-offer .footer button
+  .offers.disabled
+    -webkit-filter grayscale(100%)
+    -moz-filter grayscale(100%)
+    -ms-filter grayscale(100%)
+    -o-filter grayscale(100%)
+    filter grayscale(100%)
+
+
+// ====================================================================== 动画函数
+@keyframes slideDown
+  0%
+    transform translateY(-100%)
+  100%
+    transform translateY(0)
+
+@keyframes slideUp
+  0%
+    transform translateY(100%)
+  100%
+    transform translateY(0)
+
+@keyframes fadeIn
+  0%
+    opacity 0
+  50%
+    opacity 0
+  100%
+    opacity 1
+
+@keyframes scaleOut
+  0%
+    transform scale(1)
+    opacity 1
+  50%
+    transform scale(2)
+    opacity .2
+  100%
+    transform scale(3)
+    opacity 0
